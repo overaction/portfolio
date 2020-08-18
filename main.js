@@ -31,3 +31,12 @@ function scrollIntoView(selector) {
     const scrollTo = document.querySelector(selector);
     scrollTo.scrollIntoView({behavior: 'smooth'});
 }
+
+// Make home transparent
+const home = document.querySelector('#home');
+const homeContainer = document.querySelector('.home__container');
+const homeHeight = home.getBoundingClientRect().height;
+console.log(homeHeight);
+document.addEventListener('scroll',() => {
+    homeContainer.style.opacity = 1 - window.scrollY / homeHeight;
+})

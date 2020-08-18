@@ -166,6 +166,11 @@ p {
     padding: 40px;
     padding-top: 160px;
     text-align: center;
+    transition: all var(--animation-duration) ease-in-out;
+}
+
+#home.home--transparent {
+    opacity: 0.33;
 }
 
 .home__profile {
