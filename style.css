@@ -498,6 +498,27 @@ p {
     color: var(--color-yellow);
 }
 
+/* Arrow bar */
+#arrow {
+    z-index: 10000;
+    position: fixed;
+    top: 93%;
+    left: 93%;
+    opacity: 0;
+    pointer-events: none;
+    transition: all var(--animation-duration) ease-in;
+}
+
+#arrow i {
+    color: var(--color-dark-pink);
+    font-size: 50px;
+}
+
+#arrow.arrow__visible {
+    opacity: 1;
+    pointer-events: visible;
+}
+
 /* 768px보다 작을 때 */
 @media screen and (max-width: 768px) {
     .navbar__toggle-btn {
