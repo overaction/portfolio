@@ -330,6 +330,9 @@ p {
 
 /* Work */
 .work__categories {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     margin: 40px;
 }
 
@@ -337,7 +340,8 @@ p {
     border: 1px solid var(--color-dark-white);
     border-radius: var(--size-border-radius);
     font-size: var(--font-regular);
-    padding: 8px 48px;
+    padding: 8px 55px;
+    transition: all var(--animation-duration) ease-in;
 }
 
 .category__btn.selected,
@@ -353,18 +357,22 @@ p {
 }
 
 .category__count {
+    display: none;
     background-color: var(--color-orange);
     border-radius: 50%;
     color: var(--color-white);
     width: 24px;
     height: 24px;
-    display: inline-block;
     line-height: 24px;
     position: relative;
     top: -20px;
     left: 8px;
     opacity: 0;
     transition: all var(--animation-duration) ease-in;
+}
+
+.category__count.visible {
+    display: inline-block;
 }
 
 .work__projects {

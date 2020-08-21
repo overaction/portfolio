@@ -71,11 +71,20 @@ workBtnContainer.addEventListener('click', (e) => {
     if(filter == null) return;
 
     // Remove selection from the previous item and select the new one
-    const active = document.querySelector('.category__btn.selected');
-    active.classList.remove('selected');
-    const target = 
+    const btnActive = document.querySelector('.category__btn.selected');
+    btnActive.classList.remove('selected');
+    // category Btn
+    const btnTarget = 
         e.target.nodeName === 'BUTTON' ? e.target : e.target.parentNode;
-    target.classList.add('selected');
+    btnTarget.classList.add('selected');
+
+    // category Count
+    const countVisible = document.querySelector('.category__count.visible');
+    countVisible.classList.remove('visible');
+    const countTarget = 
+        e.target.nodeName === 'SPAN' ? e.target : e.target.firstElementChild;
+    countTarget.classList.add('visible');
+
 
     projectContainer.classList.add('anime-out');
     setTimeout(() => {
