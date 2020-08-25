@@ -17,8 +17,13 @@ navbarMenu.addEventListener('click', (e) => {
     const target = e.target;
     const link = target.dataset.link;
     if(link == null) return;
-
+    navbarMenu.classList.remove('clicked');
     scrollIntoView(link);
+})
+
+const navbarToggleBtn = document.querySelector('.navbar__toggle-btn');
+navbarToggleBtn.addEventListener('click',() => {
+    navbarMenu.classList.toggle('clicked');  
 })
 
 // Handle click on "contact me" button on home
@@ -73,7 +78,6 @@ workBtnContainer.addEventListener('click', (e) => {
     // Remove selection from the previous item and select the new one
     const btnActive = document.querySelector('.category__btn.selected');
     btnActive.classList.remove('selected');
-    // category Btn
     const btnTarget = 
         e.target.nodeName === 'BUTTON' ? e.target : e.target.parentNode;
     btnTarget.classList.add('selected');
