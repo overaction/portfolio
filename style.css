@@ -105,7 +105,7 @@ p {
     justify-content: space-between;
     background-color: transparent;
     align-items: center; 
-    padding: 16px;
+    padding: 20px;
     transition: all var(--animation-duration) ease-in-out;
 }
 
@@ -192,9 +192,13 @@ p {
     color: var(--color-light-white);
 }
 
+.home__contact:hover {
+    background-color: var(--color-orange);
+}
+
 /* Section common */
 .section {
-    padding: 50px;
+    padding: 16px;
     text-align: center;
     margin: auto;
 }
@@ -341,6 +345,7 @@ p {
     font-size: var(--font-regular);
     padding: 8px 55px;
     transition: all var(--animation-duration) ease-in;
+    position: relative;
 }
 
 .category__btn.selected,
@@ -356,16 +361,16 @@ p {
 }
 
 .category__count {
-    display: none;
+    display: inline-block;
     background-color: var(--color-orange);
     border-radius: 50%;
     color: var(--color-white);
     width: 24px;
     height: 24px;
     line-height: 24px;
-    position: relative;
+    position: absolute;
     top: -20px;
-    left: 8px;
+    right: 16px;
     opacity: 0;
     transition: all var(--animation-duration) ease-in;
 }
@@ -519,7 +524,7 @@ p {
     z-index: 10000;
     position: fixed;
     top: 93%;
-    left: 93%;
+    left: 88%;
     opacity: 0;
     pointer-events: none;
     transition: all var(--animation-duration) ease-in;
@@ -527,7 +532,7 @@ p {
 
 #arrow i {
     color: var(--color-dark-pink);
-    font-size: 50px;
+    font-size: 40px;
 }
 
 #arrow.arrow__visible {
@@ -537,9 +542,19 @@ p {
 
 /* 768px보다 작을 때 */
 @media screen and (max-width: 768px) {
+    :root {
+        /* Font size */
+        --font-large: 30px;
+        --font-medium: 18px;
+         --font-regular: 16px;
+        --font-small: 14px;
+        --font-micro: 12px;
+    }
     .navbar__toggle-btn {
         display: block;
-        transition: all var(--animation-duration) ease-in;
+        top:16px;
+        right:16px;
+        font-size: var(--font-medium);
     }
     #navbar {
         flex-direction: column;
@@ -557,16 +572,39 @@ p {
         display: flex;
     }
 
+    .section {
+        padding: 16px;
+        padding-top: 40px;
+    }
+
     .about__majors {
         flex-direction: column;
+        margin-top: 38px;
+        margin-bottom: 0px;
     }
 
     .major {
-        margin-bottom: 38px;
+        margin-bottom: 30px;
     }
 
     .skillset {
         flex-direction: column;
+    }
+
+    .category__btn {
+        margin: 4px 0;
+        width: 100%;
+    }
+
+    .testimonial {
+        align-items: center;
+    }
+
+    .testimonial:nth-child(odd) {
+        flex-direction: column;
+    }
+    .testimonial:nth-child(even) {
+        flex-direction: column-reverse;
     }
 
     .project {
@@ -576,5 +614,6 @@ p {
     .testimonial__avatar {
         width: 80px;
         height: 80px;
+        margin: 0 16px 0 0;
     }
 }
