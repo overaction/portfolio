@@ -133,6 +133,10 @@ p {
     border: 1px solid transparent;
 }
 
+.navbar__menu__item.active {
+    border: 2px solid orange;
+}
+
 .navbar__menu__item:hover {
     background-color: var(--color-dark-pink);
     border-color: var(--color-white);
@@ -361,7 +365,6 @@ p {
 }
 
 .category__count {
-    display: inline-block;
     background-color: var(--color-orange);
     border-radius: 50%;
     color: var(--color-white);
@@ -369,14 +372,16 @@ p {
     height: 24px;
     line-height: 24px;
     position: absolute;
-    top: -20px;
+    top: -30px;
     right: 16px;
     opacity: 0;
     transition: all var(--animation-duration) ease-in;
+    margin-top: 5px;
 }
 
 .category__count.visible {
-    display: inline-block;
+    position: absolute;
+    top: 30px;
 }
 
 .work__projects {
@@ -546,7 +551,7 @@ p {
         /* Font size */
         --font-large: 30px;
         --font-medium: 18px;
-         --font-regular: 16px;
+        --font-regular: 16px;
         --font-small: 14px;
         --font-micro: 12px;
     }

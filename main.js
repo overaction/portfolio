@@ -18,8 +18,50 @@ navbarMenu.addEventListener('click', (e) => {
     const link = target.dataset.link;
     if(link == null) return;
     navbarMenu.classList.remove('clicked');
-    scrollIntoView(link);
+    scrolling(link);
+
+    // change color when tapping on the navbar menu
+    const navbarActive = document.querySelector('.navbar__menu__item.active');
+    navbarActive.classList.remove('active');
+    const navbarTarget = e.target;
+    navbarTarget.classList.add('active');
+});
+
+function scrolling(selector) {
+    const scrollTo = document.getElementById(selector);
+    scrollTo.scrollIntoView({behavior: 'smooth'});
+};
+
+// IntersectionObserver
+const navbarMenuItems = document.querySelectorAll('.navbar__menu__item');
+const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        const id = entry.target.id;
+        console.log(entry);
+        if(entry.intersectionRatio > 0) {
+            console.log(id);
+            navbarMenuItems.forEach(item => {
+                if(id === item.dataset.link) {
+                    item.classList.add('active');
+                }
+            })
+        }
+        else {
+            navbarMenuItems.forEach(item => {
+                if(id === item.dataset.link) {
+                    item.classList.remove('active');
+                }
+            })
+        }
+    })
+},{rootMargin: '-400px'})
+
+const sectionList = document.querySelectorAll('.section');
+sectionList.forEach((section) => {
+    io.observe(section);
 })
+
+
 
 const navbarToggleBtn = document.querySelector('.navbar__toggle-btn');
 navbarToggleBtn.addEventListener('click',() => {
@@ -32,16 +74,10 @@ contactMeBtn.addEventListener('click', () => {
     scrollIntoView('#contact');
 });
 
-function scrollIntoView(selector) {
-    const scrollTo = document.querySelector(selector);
-    scrollTo.scrollIntoView({behavior: 'smooth'});
-}
-
 // Make home transparent
 const home = document.querySelector('#home');
 const homeContainer = document.querySelector('.home__container');
 const homeHeight = home.getBoundingClientRect().height;
-console.log(homeHeight);
 document.addEventListener('scroll',() => {
     homeContainer.style.opacity = 1 - window.scrollY / homeHeight;
 });
@@ -103,4 +139,3 @@ workBtnContainer.addEventListener('click', (e) => {
     })
     },300);
 })
-
